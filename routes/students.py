@@ -17,7 +17,9 @@ async def find_all_students(country: str | None = None, age: int | None = None):
     
     if(country != None):
         result = students(db.students.find({"address.country": country}))
-
+    if(age == None):
+        return {"data": result}
+    
     filter_age = []
     if(age != None):
         for element in result:
